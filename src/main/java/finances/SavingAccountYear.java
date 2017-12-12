@@ -1,5 +1,5 @@
 package finances;
-
+//financial prediction for business abc
 public class SavingAccountYear {
     private int interestRate =0;
     private int startingBalance =0;

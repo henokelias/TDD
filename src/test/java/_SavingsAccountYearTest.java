@@ -8,24 +8,27 @@ import static junit.framework.TestCase.fail;
 public class _SavingsAccountYearTest {
     @Test
     public void  startingBalance() {
-        SavingAccountYear account = new SavingAccountYear(10000, 10);
-        assertEquals(10000, account.startingBalance());
+        assertEquals(10000, newAccount().startingBalance());
     }
+
+    private SavingAccountYear newAccount() {
+        return new SavingAccountYear(10000, 10);
+    }
+
     @Test
     public void endingBalance() {
-        SavingAccountYear account = new SavingAccountYear(10000, 10);
-        assertEquals(11000, account.endingBalance());
+        assertEquals(11000, newAccount().endingBalance());
     }
 
     @Test
     public void nextYearStaringBalanceShouldEdualThisYearsEndingBalance() {
 
-        SavingAccountYear thisYear = new SavingAccountYear(10000, 10);
+        SavingAccountYear thisYear = newAccount();
         assertEquals(thisYear.endingBalance(), thisYear.nextYear().startingBalance());
     }
     @Test
     public void nextYearInterestEqualsThisYearInterestRate() {
-        SavingAccountYear thisYear = new SavingAccountYear(10000, 10);
+        SavingAccountYear thisYear = newAccount();
         assertEquals(thisYear.interestRate(), thisYear.nextYear().interestRate());
     }
 }

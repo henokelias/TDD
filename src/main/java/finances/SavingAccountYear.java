@@ -3,6 +3,9 @@ package finances;
 public class SavingAccountYear {
     private int interestRate =0;
     private int startingBalance =0;
+    private int capitalGainsAmount =0;
+    private int totalWithdrow =0;
+
     public SavingAccountYear() {
 
     }
@@ -11,6 +14,11 @@ public class SavingAccountYear {
         this.interestRate = interestRate;
         this.startingBalance = staringBalance;
     }
+    public SavingAccountYear(int staringBalance,int capitalGainsAmount, int interestRate) {
+        this.interestRate = interestRate;
+        this.startingBalance = staringBalance;
+        this.capitalGainsAmount = capitalGainsAmount;
+    }
 
     public SavingAccountYear nextYear() {
         return  new SavingAccountYear(this.endingBalance(),interestRate);
@@ -18,7 +26,8 @@ public class SavingAccountYear {
     }
 
     public int endingBalance() {
-        return startingBalance() + (startingBalance() * interestRate /100);
+        int modifiedStart = startingBalance -totalWithdrow;
+        return modifiedStart + (modifiedStart * interestRate / 100);
     }
 
     public int startingBalance() {
@@ -27,5 +36,16 @@ public class SavingAccountYear {
 
     public int interestRate() {
         return interestRate;
+    }
+
+    public int startingPrinciple() {
+        return startingBalance - capitalGainsAmount;
+    }
+    public void withdraw(int amount) {
+        this.totalWithdrow = amount;
+    }
+
+    public int endingPrincipal() {
+        return startingPrinciple() - totalWithdrow; // chacking for git project modification!
     }
 }

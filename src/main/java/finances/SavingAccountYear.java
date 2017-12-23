@@ -39,7 +39,7 @@ public class SavingAccountYear {
     }
 
     public int startingPrinciple() {
-        return startingBalance - capitalGainsAmount;
+        return startingBalance - capitalGainsAmount; // chacking for minar change modification
     }
     public void withdraw(int amount) {
         this.totalWithdrow = amount;
